@@ -61,3 +61,6 @@ def group(number):
     for i in output[::-1]:
         finalNumber += i
     return finalNumber
+
+if __name__ == '__main__':
+    stats()
