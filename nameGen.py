@@ -1,25 +1,27 @@
-#   Version 3.1
+#   Version 3.2
 #   02 Dec 2016
 #   Stuart Macintosh
 
 
 # ---------- Imports ----------
 import random
-
-
-# ---------- Global ----------
-# Load the .dat files into the program.
-with open("Male.dat") as f:
-    maleFirstNames = f.readlines()
-
-with open("Female.dat") as f:
-    femaleFirstNames = f.readlines()
-
-with open("Surnames.dat") as f:
-    surnames = f.readlines()
-
+import base64
 
 # ---------- Definitions ----------
+def decode(filename):
+    with open(filename, "rb") as f:
+        bin = base64.b64decode(f.read())
+    with open(filename, "wb") as f:
+        f.write(bin)
+
+
+def encode(filename):
+    with open(filename, "rb") as f:
+        text = base64.b64encode(f.read())
+    with open(filename, "wb") as f:
+        f.write(text)
+
+
 def stats():
     print """
 Male First Names            = %s
@@ -82,6 +84,27 @@ def group(number):
         finalNumber += i
     return finalNumber
 
+
+# ---------- Global ----------
+# Load the .dat files into the program.
+male = "data\\Male.dat"
+female = "data\\Female.dat"
+lastNames = "data\\Surnames.dat"
+
+decode(male)
+with open(male) as f:
+    maleFirstNames = f.readlines()
+encode(male)
+
+decode(female)
+with open(female) as f:
+    femaleFirstNames = f.readlines()
+encode(female)
+
+decode(lastNames)
+with open(lastNames) as f:
+    surnames = f.readlines()
+encode(lastNames)
 
 
 # ---------- Main ----------
