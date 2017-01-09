@@ -32,7 +32,8 @@ def nameConverter(nameFile):
 
 # ------------------------------- MAIN PROGRAM. -------------------------------------
 
-files = ["Surnames.txt", "Male.txt", "Female.txt"]
+files = ["Surnames.txt", "Male.txt", "Female.txt"] # Do NOT run Ships.txt through this code.
+                                                   # Just convert it directly to Ships.dat.
 
 for fileName in files:
     nameConverter(fileName)

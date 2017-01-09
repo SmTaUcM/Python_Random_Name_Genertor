@@ -27,7 +27,9 @@ def stats():
 Male First Names            = %s
 Female First Names          = %s
 Surnames                    = %s
-Total possible combinations = %s""" %(len(maleFirstNames), len(femaleFirstNames), len(surnames), (group(str((len(maleFirstNames) + len(femaleFirstNames)) * len(surnames)))))
+Total possible combinations = %s""" %(len(maleFirstNames), len(femaleFirstNames), len(surnames),
+                                     (group(str((len(maleFirstNames) + len(femaleFirstNames)) *
+                                      len(surnames)))))
 
 def randomMaleName():
     firstNameRange = len(maleFirstNames) - 1 # -1 due to len and index giving offset values.
@@ -66,6 +68,12 @@ def randomName():
         print "Error!"
 
 
+def randomShipName():
+    shipNameRange = len(shipNames) - 1
+    ship = shipNames[random.randint(0, shipNameRange)]
+    return ship[:-1]
+
+
 
 def group(number):
     """Used to insert commas into large numbers e.g. 1,000,000."""
@@ -90,6 +98,7 @@ def group(number):
 male = "data\\Male.dat"
 female = "data\\Female.dat"
 lastNames = "data\\Surnames.dat"
+ships = "data\\Ships.dat"
 
 decode(male)
 with open(male) as f:
@@ -105,6 +114,11 @@ decode(lastNames)
 with open(lastNames) as f:
     surnames = f.readlines()
 encode(lastNames)
+
+decode(ships)
+with open(ships) as f:
+    shipNames = f.readlines()
+encode(ships)
 
 
 # ---------- Main ----------
